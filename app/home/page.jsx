@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import deluxeRoom from "@/assets/deluxe-room.jpg";
+import Image from "next/image";
 
 // ── Hero section ──────────────────────────────────────────────────────────────
 function Hero() {
@@ -8,16 +10,27 @@ function Hero() {
       <div className="hero-content">
         <div className="hero-tag">Est. 1985 · Kalimpong, Darjeeling</div>
         <h1 className="hero-title">
-          Traditional Hotel<br/>& Restaurant
+          Traditional Hotel
+          <br />& Restaurant
         </h1>
         <p className="hero-subtitle">
           Where the hills meet heritage, and every stay tells a story
         </p>
         <div className="hero-actions">
-          <button className="btn-primary" onClick={() => window.location.href = "/booking"}>
+          <button
+            className="btn-primary"
+            onClick={() => (window.location.href = "/booking")}
+          >
             Reserve Your Stay
           </button>
-          <button className="btn-secondary" onClick={() => document.querySelector("#rooms")?.scrollIntoView({ behavior: "smooth" })}>
+          <button
+            className="btn-secondary"
+            onClick={() =>
+              document
+                .querySelector("#rooms")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
             Explore Rooms
           </button>
         </div>
@@ -35,10 +48,26 @@ function Hero() {
 // ── Features ──────────────────────────────────────────────────────────────────
 function Features() {
   const features = [
-    { icon: "🛏", title: "9 Cozy Rooms", desc: "Thoughtfully designed spaces with valley views" },
-    { icon: "🍽", title: "Authentic Cuisine", desc: "Traditional flavors from the hills & plains" },
-    { icon: "🌄", title: "Scenic Location", desc: "Minutes from Deolo Hill & downtown Kalimpong" },
-    { icon: "🏡", title: "Family Owned", desc: "Four decades of warm Himalayan hospitality" },
+    {
+      icon: "🛏",
+      title: "9 Cozy Rooms",
+      desc: "Thoughtfully designed spaces with valley views",
+    },
+    {
+      icon: "🍽",
+      title: "Authentic Cuisine",
+      desc: "Traditional flavors from the hills & plains",
+    },
+    {
+      icon: "🌄",
+      title: "Scenic Location",
+      desc: "Minutes from Deolo Hill & downtown Kalimpong",
+    },
+    {
+      icon: "🏡",
+      title: "Family Owned",
+      desc: "Four decades of warm Himalayan hospitality",
+    },
   ];
 
   return (
@@ -50,7 +79,11 @@ function Features() {
         </div>
         <div className="features-grid">
           {features.map((f, i) => (
-            <div key={i} className="feature-card" style={{ animationDelay: `${i * 0.1}s` }}>
+            <div
+              key={i}
+              className="feature-card"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
               <div className="feature-icon">{f.icon}</div>
               <h3 className="feature-title">{f.title}</h3>
               <p className="feature-desc">{f.desc}</p>
@@ -65,9 +98,25 @@ function Features() {
 // ── Rooms ─────────────────────────────────────────────────────────────────────
 function Rooms() {
   const rooms = [
-    { name: "Valley View Suite", price: 2500, capacity: "2 guests", amenities: "King Bed · Balcony · Mountain View" },
-    { name: "Deluxe Room", price: 2000, capacity: "2-3 guests", amenities: "Queen Bed · Garden View · Mini Fridge" },
-    { name: "Family Room", price: 3500, capacity: "4 guests", amenities: "2 Queen Beds · Spacious · Garden Access" },
+    {
+      name: "Valley View Suite",
+      price: 2500,
+      capacity: "2 guests",
+      amenities: "King Bed · Balcony · Mountain View",
+    },
+    {
+      name: "Deluxe Room",
+      image: deluxeRoom,
+      price: 2000,
+      capacity: "2-3 guests",
+      amenities: "Queen Bed · Garden View · Mini Fridge",
+    },
+    {
+      name: "Family Room",
+      price: 3500,
+      capacity: "4 guests",
+      amenities: "2 Queen Beds · Spacious · Garden Access",
+    },
   ];
 
   return (
@@ -76,17 +125,24 @@ function Rooms() {
         <div className="section-header">
           <span className="section-tag">Accommodations</span>
           <h2 className="section-title">Our Rooms</h2>
-          <p className="section-subtitle">Each room offers comfort, tranquility, and breathtaking views of the Eastern Himalayas</p>
+          <p className="section-subtitle">
+            Each room offers comfort, tranquility, and breathtaking views of the
+            Eastern Himalayas
+          </p>
         </div>
         <div className="rooms-grid">
           {rooms.map((r, i) => (
-            <div key={i} className="room-card" style={{ animationDelay: `${i * 0.12}s` }}>
+            <div
+              key={i}
+              className="room-card"
+              style={{ animationDelay: `${i * 0.12}s` }}
+            >
               <div className="room-image">
-                <div className="room-placeholder">
-                  <span className="room-icon">🛏</span>
-                </div>
+                <Image src={r.image} alt={r.name} width={400} height={300} />
                 <div className="room-badge">
-                  <span className="badge-price">₹{r.price.toLocaleString()}</span>
+                  <span className="badge-price">
+                    ₹{r.price.toLocaleString()}
+                  </span>
                   <span className="badge-night">/night</span>
                 </div>
               </div>
@@ -94,7 +150,10 @@ function Rooms() {
                 <h3 className="room-name">{r.name}</h3>
                 <div className="room-capacity">{r.capacity}</div>
                 <div className="room-amenities">{r.amenities}</div>
-                <button className="room-btn" onClick={() => window.location.href = "/booking"}>
+                <button
+                  className="room-btn"
+                  onClick={() => (window.location.href = "/booking")}
+                >
                   Book Now →
                 </button>
               </div>
@@ -122,16 +181,19 @@ function Restaurant() {
             <span className="section-tag">Dining</span>
             <h2 className="section-title-alt">Savor the Hills</h2>
             <p className="restaurant-text">
-              Our in-house restaurant serves a curated menu blending Nepali, Tibetan, Bengali, and 
-              North Indian cuisines. Every dish is prepared with locally sourced ingredients and recipes 
-              passed down through generations.
+              Our in-house restaurant serves a curated menu blending Nepali,
+              Tibetan, Bengali, and North Indian cuisines. Every dish is
+              prepared with locally sourced ingredients and recipes passed down
+              through generations.
             </p>
             <div className="restaurant-highlights">
               <div className="highlight-item">
                 <div className="highlight-icon">☕</div>
                 <div>
                   <div className="highlight-title">Breakfast Included</div>
-                  <div className="highlight-desc">Traditional hill breakfast with every stay</div>
+                  <div className="highlight-desc">
+                    Traditional hill breakfast with every stay
+                  </div>
                 </div>
               </div>
               <div className="highlight-item">
@@ -145,7 +207,9 @@ function Restaurant() {
                 <div className="highlight-icon">🌱</div>
                 <div>
                   <div className="highlight-title">Vegetarian Friendly</div>
-                  <div className="highlight-desc">Extensive vegetarian & vegan options</div>
+                  <div className="highlight-desc">
+                    Extensive vegetarian & vegan options
+                  </div>
                 </div>
               </div>
             </div>
@@ -171,17 +235,26 @@ function Location() {
         <div className="section-header">
           <span className="section-tag">Location</span>
           <h2 className="section-title">Explore Kalimpong</h2>
-          <p className="section-subtitle">Perfectly situated to access the best of Kalimpong's natural beauty and cultural heritage</p>
+          <p className="section-subtitle">
+            Perfectly situated to access the best of Kalimpong's natural beauty
+            and cultural heritage
+          </p>
         </div>
         <div className="location-content">
           <div className="map-placeholder">
             <div className="map-icon">📍</div>
             <div className="map-label">Traditional Hotel & Restaurant</div>
-            <div className="map-address">Main Road, Kalimpong, Darjeeling, West Bengal 734301</div>
+            <div className="map-address">
+              Main Road, Kalimpong, Darjeeling, West Bengal 734301
+            </div>
           </div>
           <div className="nearby-grid">
             {nearby.map((p, i) => (
-              <div key={i} className="nearby-item" style={{ animationDelay: `${i * 0.1}s` }}>
+              <div
+                key={i}
+                className="nearby-item"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
                 <span className="nearby-icon">{p.icon}</span>
                 <div>
                   <div className="nearby-name">{p.name}</div>
@@ -199,9 +272,24 @@ function Location() {
 // ── Testimonials ──────────────────────────────────────────────────────────────
 function Testimonials() {
   const reviews = [
-    { name: "Anjali Gupta", location: "Kolkata", text: "A hidden gem in the hills! The warmth of the family and the authentic food made our trip unforgettable.", rating: 5 },
-    { name: "Rahul Mehta", location: "Delhi", text: "Perfect blend of comfort and tradition. The mountain views from our room were absolutely stunning.", rating: 5 },
-    { name: "Priya Sharma", location: "Mumbai", text: "The restaurant exceeded our expectations. Every meal felt like a home-cooked feast. Highly recommend!", rating: 5 },
+    {
+      name: "Anjali Gupta",
+      location: "Kolkata",
+      text: "A hidden gem in the hills! The warmth of the family and the authentic food made our trip unforgettable.",
+      rating: 5,
+    },
+    {
+      name: "Rahul Mehta",
+      location: "Delhi",
+      text: "Perfect blend of comfort and tradition. The mountain views from our room were absolutely stunning.",
+      rating: 5,
+    },
+    {
+      name: "Priya Sharma",
+      location: "Mumbai",
+      text: "The restaurant exceeded our expectations. Every meal felt like a home-cooked feast. Highly recommend!",
+      rating: 5,
+    },
   ];
 
   return (
@@ -213,10 +301,12 @@ function Testimonials() {
         </div>
         <div className="testimonials-grid">
           {reviews.map((r, i) => (
-            <div key={i} className="testimonial-card" style={{ animationDelay: `${i * 0.1}s` }}>
-              <div className="testimonial-stars">
-                {"★".repeat(r.rating)}
-              </div>
+            <div
+              key={i}
+              className="testimonial-card"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              <div className="testimonial-stars">{"★".repeat(r.rating)}</div>
               <p className="testimonial-text">"{r.text}"</p>
               <div className="testimonial-author">
                 <div className="author-avatar">{r.name[0]}</div>
@@ -240,8 +330,14 @@ function CTA() {
       <div className="container">
         <div className="cta-content">
           <h2 className="cta-title">Ready for Your Himalayan Escape?</h2>
-          <p className="cta-subtitle">Book your stay today and experience the warmth of traditional hospitality</p>
-          <button className="btn-cta" onClick={() => window.location.href = "/booking"}>
+          <p className="cta-subtitle">
+            Book your stay today and experience the warmth of traditional
+            hospitality
+          </p>
+          <button
+            className="btn-cta"
+            onClick={() => (window.location.href = "/booking")}
+          >
             Reserve Your Room
           </button>
         </div>
@@ -259,16 +355,25 @@ function Footer() {
           <div className="footer-col">
             <h4 className="footer-title">Traditional Hotel & Restaurant</h4>
             <p className="footer-text">
-              A family-owned sanctuary in the heart of Kalimpong, serving travelers since 1985.
+              A family-owned sanctuary in the heart of Kalimpong, serving
+              travelers since 1985.
             </p>
           </div>
           <div className="footer-col">
             <h5 className="footer-heading">Quick Links</h5>
             <ul className="footer-links">
-              <li><a href="/booking">Book Now</a></li>
-              <li><a href="#rooms">Our Rooms</a></li>
-              <li><a href="#location">Location</a></li>
-              <li><a href="/contact">Contact Us</a></li>
+              <li>
+                <a href="/booking">Book Now</a>
+              </li>
+              <li>
+                <a href="#rooms">Our Rooms</a>
+              </li>
+              <li>
+                <a href="#location">Location</a>
+              </li>
+              <li>
+                <a href="/contact">Contact Us</a>
+              </li>
             </ul>
           </div>
           <div className="footer-col">
@@ -294,7 +399,8 @@ export default function Homepage() {
 
   useEffect(() => {
     const link = document.createElement("link");
-    link.href = "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cinzel:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cinzel:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap";
     link.rel = "stylesheet";
     document.head.appendChild(link);
     setTimeout(() => setMounted(true), 60);

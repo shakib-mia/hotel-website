@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import deluxeRooms from "@/assets/deluxe-room.jpg";
+import valleyView from "@/assets/valley-view.jpg";
+import familyRoom from "@/assets/family-room.jpg";
+import hero from "@/assets/hero.jpg";
+import Image from "next/image";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -529,10 +534,13 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-image">
-          <div className="image-placeholder">
-            <span className="image-icon">🏔</span>
-            <div className="image-caption">Overlooking the Kanchenjunga</div>
-          </div>
+          <Image
+            src={hero}
+            alt="Hero Image"
+            width={800}
+            height={600}
+            style={{ width: 800, height: 600, objectFit: "cover" }}
+          />
         </div>
       </section>
 
@@ -598,18 +606,21 @@ export default function Home() {
                 guests: "2 guests",
                 amenities: "King Bed · Balcony · Mountain View",
                 price: "₹2,500",
+                image: valleyView,
               },
               {
                 name: "Deluxe Room",
                 guests: "2-3 guests",
                 amenities: "Queen Bed · Garden View · Mini Fridge",
                 price: "₹2,000",
+                image: deluxeRooms,
               },
               {
                 name: "Family Room",
                 guests: "4 guests",
                 amenities: "2 Queen Beds · Spacious · Garden Access",
                 price: "₹3,500",
+                image: familyRoom,
               },
             ].map((room, i) => (
               <div
@@ -618,9 +629,13 @@ export default function Home() {
                 style={{ animationDelay: `${i * 0.12}s` }}
               >
                 <div className="room-image">
-                  <div className="room-placeholder">
-                    <span className="room-icon">🛏</span>
-                  </div>
+                  <Image
+                    src={room.image}
+                    alt={room.name}
+                    width={400}
+                    height={300}
+                    className="aspect-4/3 object-cover"
+                  />
                   <div className="room-badge">
                     <span className="badge-price">{room.price}</span>
                     <span className="badge-night">/night</span>
